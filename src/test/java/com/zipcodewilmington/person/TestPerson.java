@@ -7,15 +7,17 @@ import org.junit.Test;
  * Created by leon on 2/12/18.
  */
 public class TestPerson {
+
     @Test
     public void testDefaultConstructor() {
         // Given
         String expectedName = "";
         Integer expectedAge = Integer.MAX_VALUE;
-
+        PersonBuilder builder = new PersonBuilder();
         // When
-        Person person = new Person();
-
+        builder.setName(expectedName);
+        builder.setAge(expectedAge);
+        Person person =  builder.build();
         // Then
         String actualName = person.getName();
         Integer actualAge = person.getAge();
@@ -28,9 +30,10 @@ public class TestPerson {
     public void testConstructorWithName() {
         // Given
         String expected = "Leon";
-
+        PersonBuilder builder = new PersonBuilder();
         // When
-        Person person = new Person(expected);
+        builder.setName(expected);
+        Person person =  builder.build();
 
         // Then
         String actual = person.getName();
@@ -41,9 +44,10 @@ public class TestPerson {
     public void testConstructorWithAge() {
         // Given
         Integer expected = 5;
-
+        PersonBuilder builder = new PersonBuilder();
         // When
-        Person person = new Person(expected);
+        builder.setAge(expected);
+        Person person =  builder.build();
 
         // Then
         Integer actual = person.getAge();
@@ -56,9 +60,11 @@ public class TestPerson {
         // Given
         Integer expectedAge = 5;
         String expectedName = "Leon";
-
+        PersonBuilder builder = new PersonBuilder();
         // When
-        Person person = new Person(expectedName, expectedAge);
+        builder.setName(expectedName);
+        builder.setAge(expectedAge);
+        Person person =  builder.build();
 
         // Then
         Integer actualAge = person.getAge();
@@ -71,11 +77,12 @@ public class TestPerson {
     @Test
     public void testSetName() {
         // Given
-        Person person = new Person();
         String expected = "Leon";
 
+        PersonBuilder builder = new PersonBuilder().setName(expected);
+
         // When
-        person.setName(expected);
+        Person person = builder.build();
         String actual = person.getName();
 
         // Then
@@ -85,12 +92,13 @@ public class TestPerson {
     @Test
     public void testSetAge() {
         // Given
-        Person person = new Person();
+        PersonBuilder builder = new PersonBuilder();
+
         Integer expected = 5;
 
         // When
-        person.setAge(expected);
-
+        builder.setAge(expected);
+        Person person = builder.build();
         // Then
         Integer actual = person.getAge();
         Assert.assertEquals(expected, actual);

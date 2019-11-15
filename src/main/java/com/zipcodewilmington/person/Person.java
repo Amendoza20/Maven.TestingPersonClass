@@ -4,32 +4,41 @@ package com.zipcodewilmington.person;
  * Created by leon on 2/12/18.
  */
 public class Person {
+
+    private Integer id;
+    private String favoriteColor;
+    private Boolean alive;
     private String name;
-    private int age;
+    private Integer age;
 
-    public Person() {
+    public Person(Integer id, String favoriteColor, Boolean alive, String name, Integer age) {
+             this.id = id;
+             this.favoriteColor = favoriteColor;
+             this.alive = alive;
+             this.name = name;
+             this.age = age;
     }
 
-    public Person(int age) {
+    public Integer getId() {
+        return id;
     }
 
-    public Person(String name) {
+    public String getFavoriteColor() {
+        return favoriteColor;
     }
 
-    public Person(String name, int age) {
-    }
-
-    public void setName(String name) {
-    }
-
-    public void setAge(int age) {
+    public Boolean getAlive() {
+        return alive;
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public Integer getAge() {
-        return null;
+        return age;
     }
 }
+
+
+
